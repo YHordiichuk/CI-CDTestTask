@@ -1,29 +1,27 @@
 pipeline {
+    agent any
   
-  agent any
-  
-  stages {
+    stages {
     
-      stage("build") {
+        stage("build") {
         
-          steps {
-               echo 'building the sql scipts'
-          }
+            steps {
+                echo 'building the sql scipts'
+            }
+        }
         
+        stage("test") {
         
-      stage("test") {
-        
-          steps {
-              echo 'testing db with new scripts'
-          }
+            steps {
+                echo 'testing db with new scripts'
+            }
+        }
          
-      stage("deploy") {
+        stage("deploy") {
         
-          steps {
+            steps {
               echo 'deploying scipts'
-          }
-        
-       } 
+            }
+        }
     }
 }
-
