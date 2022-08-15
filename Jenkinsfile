@@ -20,7 +20,7 @@ pipeline {
 			withCredentials([gitUsernamePassword(credentialsId: '91ff1c95-9d6b-409f-a5a5-db3029ef8eb0', gitToolName: 'Default')]) {
     			 	sh 'git checkout dev'
 				sh 'git merge main'
-				sh 'git push '
+				sh 'git push origin'
 			}
 				
 					
