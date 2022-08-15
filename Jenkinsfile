@@ -19,7 +19,7 @@ pipeline {
 					sh 'git checkout dev'
 					sh 'git merge origin/main'	
 					sh 'git pull origin dev'
-					sh 'git push origin devt'
+					sh 'git push origin dev'
 					
 					
 				}
