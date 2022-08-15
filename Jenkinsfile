@@ -12,21 +12,17 @@ pipeline {
     }
     
     stage ('Merging release and develop'){
-			steps {
-				script {
-               				withCredentials([usernameColonPassword(credentialsId: '3e273a50-68e1-4a3b-a63f-a0880221ac8b', variable: 'creds')]) {
-					sh 'git config --global user.email yura1234gor@gmail.com'
-					sh 'git config --global user.name "YGordiychuk"'
-					sh 'git checkout dev'
-					sh 'git merge origin/main'	
-					sh 'git pull origin dev'
-
-					sh 'git push https://${creds}@github.com/YGordiychuk/CI-CDTestTask'
-			
-					 }}
-					
-				}
-			}
-
-  }
+			steps{
+            withCredentials([sshUserPrivateKey(credentialsId: 'f37d4cca-f21b-4b0e-8e5d-6163ec297273', keyFileVariable: 'SSH_KEY')]) {
+                sh 'git checkout develop'
+                sh 'git pull'
+                sh 'git checkout -b release_${RELEASE_NUMBER} develop'
+                sh 'git merge develop'
+                sh 'GIT_SSH_COMMAND="ssh -i $SSH_KEY" git push git@github.com:BedinovOleksandr/CI-CD_home_task.git'
+            }
+        }
+	}
+	}
 }
+
+
