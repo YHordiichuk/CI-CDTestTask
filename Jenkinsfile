@@ -15,7 +15,8 @@ pipeline {
 			steps {
         			sh 'git config --global user.email yura1234gor@gmail.com'
 				sh 'git config --global user.name "YGordiychuk"'
-			  withCredentials([usernameColonPassword(credentialsId: '3e273a50-68e1-4a3b-a63f-a0880221ac8b', variable: 'creds')]) {
+			withCredentials([sshUserPrivateKey(credentialsId: '032f3853-cc19-4a2b-971a-4f8dc596157a', keyFileVariable: 'creds1', passphraseVariable: 'hello', usernameVariable: 'creds')]) {
+
 					sh 'git checkout dev'
 					sh 'git merge origin/main'	
 					sh 'git pull origin dev'
