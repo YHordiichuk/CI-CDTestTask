@@ -16,7 +16,7 @@ pipeline {
             withCredentials([sshUserPrivateKey(credentialsId: '7f5d73bb-48d4-40eb-94df-b57795d8dae5', keyFileVariable: 'SSH_KEY')]) {
                 sh 'git checkout dev'
                 sh 'git pull'
-                sh 'git merge main'
+                sh 'git merge origin/main'
                 sh 'GIT_SSH_COMMAND="ssh -i $SSH_KEY" git push git@github.com:YGordiychuk/CI-CDTestTask.git'
             }
         }
