@@ -15,12 +15,13 @@ pipeline {
 			git branch: 'main', credentialsId: '91ff1c95-9d6b-409f-a5a5-db3029ef8eb0', url: 'https://github.com/YGordiychuk/CI-CDTestTask'
 			
 					
-			sh 'git checkout main'
-			sh 'git pull'
-			sh 'git merge origin/${BRANCH_NAME}'
+			
 					
 			withCredentials([gitUsernamePassword(credentialsId: '91ff1c95-9d6b-409f-a5a5-db3029ef8eb0', gitToolName: 'Default')]) {
-    			 sh 'git push https://${creds}@github.com/YGordiychuk/CI-CDTestTask.git'
+    			 	sh 'git checkout main'
+				sh 'git pull'
+				sh 'git merge origin/dev'
+				sh 'git push '
 			}
 				
 					
