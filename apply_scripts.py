@@ -1,10 +1,6 @@
-# run:  pytest main.py > results.txt
-import pytest
 import sqlalchemy
-import urllib
 import pyodbc
 from sqlalchemy import create_engine
-import queries as qur
 
 
 def connection():
