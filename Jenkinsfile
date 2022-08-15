@@ -6,7 +6,7 @@ pipeline {
         withPythonEnv('python') {
           sh 'pip install -r requirements.txt'
           
-          sh './apply_scripts.py'
+          sh 'python ./apply_scripts.py'
           sh 'pytest ./tests/main.py'
                                 }
         
