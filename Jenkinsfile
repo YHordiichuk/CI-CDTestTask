@@ -13,12 +13,11 @@ pipeline {
     
     stage ('Merging release and develop'){
 			steps{
-            withCredentials([sshUserPrivateKey(credentialsId: 'f37d4cca-f21b-4b0e-8e5d-6163ec297273', keyFileVariable: 'SSH_KEY')]) {
-                sh 'git checkout develop'
+            withCredentials([sshUserPrivateKey(credentialsId: '7f5d73bb-48d4-40eb-94df-b57795d8dae5', keyFileVariable: 'SSH_KEY')]) {
+                sh 'git checkout dev'
                 sh 'git pull'
-                sh 'git checkout -b release_${RELEASE_NUMBER} develop'
-                sh 'git merge develop'
-                sh 'GIT_SSH_COMMAND="ssh -i $SSH_KEY" git push git@github.com:BedinovOleksandr/CI-CD_home_task.git'
+                sh 'git merge main'
+                sh 'GIT_SSH_COMMAND="ssh -i $SSH_KEY" git push git@github.com:YGordiychuk/CI-CDTestTask.git'
             }
         }
 	}
