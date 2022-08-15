@@ -12,17 +12,16 @@ pipeline {
 			        }
 		    stage ('Merging release and develop'){
 			        steps {
-			git branch: 'main', credentialsId: '91ff1c95-9d6b-409f-a5a5-db3029ef8eb0', url: 'https://github.com/YGordiychuk/CI-CDTestTask'
+				git config --global user.email "yura1234gor@gmail.com"
+ 				git config --global user.name "Yurii Hordiichuk"			
 			
 					
-			
-					
-			withCredentials([gitUsernamePassword(credentialsId: '91ff1c95-9d6b-409f-a5a5-db3029ef8eb0', gitToolName: 'Default')]) {
-    			 	git config --global user.email "yura1234gor@gmail.com"
- 				 git config --global user.name "Yurii Hordiichuk"
+				withCredentials([gitUsernamePassword(credentialsId: '91ff1c95-9d6b-409f-a5a5-db3029ef8eb0', gitToolName: 'Default')]) {
+    			 	
 				sh 'git checkout dev'
-				sh 'git merge main'
-				sh 'git push origin dev'
+				sh 'git merge origin/main'
+				sh 'git pull origin dev'
+				ssh 'git push https://${creds}@github.com/YGordiychuk/CI-CDTestTask'
 			}
 				
 					
