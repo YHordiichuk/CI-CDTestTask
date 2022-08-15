@@ -1,4 +1,4 @@
-CREATE VIEW [exluded_spends_info] AS
+ALTER VIEW [exluded_spends_info] AS
 	SELECT [first_name]
       ,[last_name]
       ,'Exluded' as [email]
