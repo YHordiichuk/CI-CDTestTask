@@ -2,33 +2,42 @@
 import pytest
 import sqlalchemy
 import urllib
+import pyodbc
 
 import queries as qur
 
 
 def connection():
-    server = r'EPUAKYIW0E87\SQLEXPRESS'
+#     server = r'EPUAKYIW0E87\SQLEXPRESS'
+#     database = 'TRN1'
+#     login = 'loginfortest'
+#     pwd = 'test123'
+
+#     # if you have trouble with new user credentials, you can connect using Trusted_Connection.
+#     # Just uncomment params below(row 18-21) and comment row 23-28
+
+#     # params = urllib.parse.quote_plus(' DRIVER={ODBC Driver 17 for SQL Server}; \
+#     #                             SERVER=' + server + '; \
+#     #                             DATABASE=' + database + '; \
+#     #                             Trusted_Connection=yes;')
+
+#     params = urllib.parse.quote_plus(' DRIVER={ODBC Driver 17 for SQL Server}; \
+#                                     SERVER=' + server + '; \
+#                                     DATABASE=' + database + '; \
+#                                     UID=' + login + '; \
+#                                     PWD=' + pwd + ';'
+#                                     )
+
+#     engine = sqlalchemy.create_engine("mssql+pyodbc:///?odbc_connect=%s" % params)
+    
+    from sqlalchemy import create_engine
     database = 'TRN1'
     login = 'loginfortest'
-    pwd = 'test123'
-
-    # if you have trouble with new user credentials, you can connect using Trusted_Connection.
-    # Just uncomment params below(row 18-21) and comment row 23-28
-
-    # params = urllib.parse.quote_plus(' DRIVER={ODBC Driver 17 for SQL Server}; \
-    #                             SERVER=' + server + '; \
-    #                             DATABASE=' + database + '; \
-    #                             Trusted_Connection=yes;')
-
-    params = urllib.parse.quote_plus(' DRIVER={ODBC Driver 17 for SQL Server}; \
-                                    SERVER=' + server + '; \
-                                    DATABASE=' + database + '; \
-                                    UID=' + login + '; \
-                                    PWD=' + pwd + ';'
-                                    )
-
-    engine = sqlalchemy.create_engine("mssql+pyodbc:///?odbc_connect=%s" % params)
-
+    password = 'test123'
+    db_config = 'DRIVER={ODBC Driver 17 for SQL Server};SERVER=192.168.31.161;DATABASE=%(database)s;UID=%(login)s;PWD=%(password)s;TrustServerCertificate=yes;' % {'database': database, 'login': login, 'password': password}
+    engine = create_engine("mssql+pyodbc:///?odbc_connect=%s" % db_config)
+  
+        
     return engine.connect()
 
 
