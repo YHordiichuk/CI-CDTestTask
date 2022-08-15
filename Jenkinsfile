@@ -13,10 +13,10 @@ pipeline {
 		    stage ('Merging release and develop'){
 			        steps {
                         sh 'git checkout main'
-                        sh 'git merge origin/${RELEASE_NUMBER}'	
-                        sh 'git pull origin dev'
-                        sh 'git push https://${creds}@github.com/YGordiychuk/CI-CDTestTask'
-					
+                        sh 'git add .'	
+                        sh 'git commit -m 'Merging last release''
+                        sh 'git remote'
+			sh 'git push origin'		
 				}
 			}
 		}
