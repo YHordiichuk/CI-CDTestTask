@@ -16,7 +16,8 @@ pipeline {
     			 	sh 'git checkout main'
 				sh 'git pull'
 				sh 'git merge origin/dev'
-				sh 'git push'
+				sh 'git pull origin main
+'
 			}
 				
 					
