@@ -1,4 +1,4 @@
-CREATE VIEW [spends_by_country] AS
+ALTER VIEW [spends_by_country] AS
 	SELECT CASE WHEN c.[country_id] = 'DE' THEN 'Exluded Country' ELSE c.[country_id] END AS [country_id], SUM([salary]) Spends 
 	FROM [TRN1].[hr].[employees] a
 	LEFT JOIN [hr].[departments] b 
