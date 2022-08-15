@@ -20,7 +20,7 @@ pipeline {
 					sh 'git checkout dev'
 					sh 'git merge origin/main'	
 					sh 'git pull origin dev'
-				  	sh 'git push https://${creds}@github.com/YGordiychuk/CI-CDTestTask.git'
+				  	sh 'git push https://${creds1}@github.com/YGordiychuk/CI-CDTestTask.git'
 					}
 				}
 			}
