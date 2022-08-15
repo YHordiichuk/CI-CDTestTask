@@ -21,7 +21,7 @@ pipeline {
 					sh 'git pull origin dev'
 					sh 'git push origin devt'
 					
-					}
+					
 				}
 			}
 
