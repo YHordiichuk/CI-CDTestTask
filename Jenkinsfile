@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage("Environment setup and test execution") {
       steps {
-        withPythonEnv('python') {
+        with PythonEnv('python') {
           sh 'pip install -r requirements.txt'
           sh 'pytest ./tests/main.py'
         }
