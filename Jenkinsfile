@@ -14,9 +14,9 @@ pipeline {
     stage ('Merging release and develop'){
 			steps{
             withCredentials([sshUserPrivateKey(credentialsId: 'f82a0f39-31af-4bb8-9da5-fe26429fb5b5', keyFileVariable: 'SSH_KEY')]) {
-                sh 'git checkout dev'
+                sh 'git checkout main'
                 sh 'git pull'
-                sh 'git merge origin/main'
+                sh 'git merge origin/dev'
                 sh 'GIT_SSH_COMMAND="ssh -i $SSH_KEY" git push git@github.com:YGordiychuk/CI-CDTestTask.git'
             }
         }
