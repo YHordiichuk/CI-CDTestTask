@@ -19,8 +19,12 @@ pipeline {
 					sh 'git checkout dev'
 					sh 'git merge origin/main'	
 					sh 'git pull origin dev'
-					sh 'git push https://github.com/YGordiychuk/CI-CDTestTask'
-					
+				
+               				 withCredentials([sshUserPrivateKey(credentialsId: '7f5d73bb-48d4-40eb-94df-b57795d8dae5', keyFileVariable: 'creds', passphraseVariable: 'hello', usernameVariable: 'creds')]) {
+
+
+					sh 'git push git@github.com:YGordiychuk/CI-CDTestTask.git'
+					 }
 					
 				}
 			}
