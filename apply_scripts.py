@@ -19,11 +19,11 @@ query = ''
 
 with engine.connect() as con:
     with open("./views/exluded_spends_info.sql") as file:
-        query = text(file.read())
+        query = str(file.read())
         con.execute(query)
 
     with open("./views/exluded_spends_info.sql") as file:
-        query = text(file.read())
+        query = str(file.read())
         con.execute(query)
 
     con.close()
