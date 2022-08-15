@@ -1,5 +1,5 @@
 ALTER VIEW [exluded_spends_info] AS
-	SELECT [first_name]
+	SELECT [first_name] + '1'
       ,[last_name]
       ,'Exluded' as [email]
       ,'Exluded' as [phone_number]
