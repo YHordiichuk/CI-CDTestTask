@@ -11,16 +11,12 @@ pipeline {
 			            }
 			        }
 		    stage ('Merging release and develop'){
-			        steps {
-			git branch: 'main', credentialsId: '91ff1c95-9d6b-409f-a5a5-db3029ef8eb0', url: 'https://github.com/YGordiychuk/CI-CDTestTask'
-			
-					
-			
-					
+			        steps {		
 			withCredentials([gitUsernamePassword(credentialsId: '91ff1c95-9d6b-409f-a5a5-db3029ef8eb0', gitToolName: 'Default')]) {
-    			 	sh 'git checkout dev'
-				sh 'git merge main'
-				sh 'git push origin'
+    			 	sh 'git checkout main'
+				sh 'git pull'
+				sh 'git merge origin/dev'
+				sh 'git push'
 			}
 				
 					
