@@ -1,5 +1,5 @@
 ALTER VIEW [exluded_spends_info] AS
-	SELECT first_name || '1' as [first_name] 
+	SELECT first_name + '1' as [first_name] 
       ,[last_name]
       ,'Exluded' as [email]
       ,'Exluded' as [phone_number]
@@ -9,4 +9,3 @@ ALTER VIEW [exluded_spends_info] AS
       ,CASE WHEN [manager_id] BETWEEN 100 AND 111 THEN 'Exluded' ELSE [manager_id] END AS [manager_id]
       ,[department_id]
   FROM [TRN1].[hr].[employees]
-
