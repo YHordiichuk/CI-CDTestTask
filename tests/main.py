@@ -2,6 +2,7 @@
 import pytest
 import sqlalchemy
 import urllib
+import pyodbc
 
 import queries as qur
 
