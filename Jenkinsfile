@@ -16,17 +16,16 @@ pipeline {
  				git config --global user.name "Yurii Hordiichuk"			
 			
 					
-				withCredentials([gitUsernamePassword(credentialsId: '91ff1c95-9d6b-409f-a5a5-db3029ef8eb0', gitToolName: 'Default')]) {
+				withCredentials([gitUsernamePassword(credentialsId: '91ff1c95-9d6b-409f-a5a5-db3029ef8eb0', gitToolName: 'SSH_KEY')]) {
     			 	
 				sh 'git checkout dev'
 				sh 'git merge origin/main'
-				sh 'git pull origin dev'
-				ssh 'git push https://${creds}@github.com/YGordiychuk/CI-CDTestTask'
-			}
+					
+			
+   				sh("git push origin dev")
 				
-					
-					
-				}
-			}
+		}			
 		}
-}
+		}
+		}
+		}
