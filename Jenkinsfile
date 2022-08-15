@@ -14,7 +14,7 @@ pipeline {
 			        steps {
                         sh 'git checkout main'
                         sh 'git add .'	
-                        sh 'git commit -m 'Merging last release''
+                        sh "git commit -m 'Merging last release'"
                         sh 'git remote'
 			sh 'git push origin'		
 				}
